@@ -5,25 +5,15 @@ let userInputButton = document.getElementById("userAddButton")
 let userTaskListContainer = document.getElementById("todoUList")
 
 
-let todoList = [
-  {
-    text: "Learn HTML",
-    uniqueNo: 1
-  },
-  {
-    text: "Learn CSS",
-    uniqueNo: 2
-  },
-  {
-    text: "Learn JavaScript",
-    uniqueNo: 3
-  }
-];
-
-let todoListLenght = todoList.length
+let myTaskInnerContainer = document.getElementById('myTaskInnerContainer')
 
 
-function oncompletedTodo(checkBoxId ,lableId){
+let todoList = [];
+
+
+
+
+function oncompletedTodo(checkBoxId, lableId) {
 
   let checkBox = document.getElementById(checkBoxId)
 
@@ -34,6 +24,22 @@ function oncompletedTodo(checkBoxId ,lableId){
 }
 
 
+
+function onDeleteTodo(todoId) {
+
+  let todoElement = document.getElementById(todoId)
+
+  userTaskListContainer.removeChild(todoElement)
+
+}
+
+function addTodoListElemntsInLocal(userData) {
+
+  console.log(userData)
+
+ 
+
+}
 
 function createAndAppendList(userEnterdData) {
 
@@ -61,7 +67,7 @@ function createAndAppendList(userEnterdData) {
 
   inputElement.onclick = function () {
 
-    oncompletedTodo(checkBoxId,lableId)
+    oncompletedTodo(checkBoxId, lableId)
 
   }
 
@@ -114,6 +120,8 @@ function createAndAppendList(userEnterdData) {
 
   deleteIcon.onclick = function () {
 
+    onDeleteTodo(todoId)
+
   }
 
 
@@ -133,6 +141,8 @@ function createAndAppendList(userEnterdData) {
 }
 
 
+
+
 for (let todoItem of todoList) {
 
   createAndAppendList(todoItem)
@@ -142,7 +152,59 @@ for (let todoItem of todoList) {
 
 userInputButton.onclick = function () {
 
-  createAndAppendList(userInputValue.value)
+
+  if (userInputValue.value === "") {
+    alert("invalid input")
+    return
+  }
+
+  let userData = {
+    text: userInputValue.value,
+    uniqueNo: todoList.length + 1
+  }
+
+
+  todoList.push(userData)
+
+  createAndAppendList(userData)
+
+  userInputValue.value = ""
+
+
+  let saveTodoButton = document.createElement("button")
+
+  saveTodoButton.textContent = "Save"
+
+  saveTodoButton.classList.add("todoButton")
+
+
+  saveTodoButton.onclick = function () {
+
+     addTodoListElemntsInLocal(userData)
+
+
+    let dummyjs = {
+      name: "sathish",
+      age: 24,
+      course: "mern"
+    }
+
+    console.log(dummyjs)
+
+    let stringifyData = JSON.stringify(dummyjs)
+
+    console.log(typeof(stringifyData))
+
+  }
+
+
+  if (todoList.length === 1) {
+    myTaskInnerContainer.appendChild(saveTodoButton)
+  } else {
+    return
+  }
+
+
 
 }
 

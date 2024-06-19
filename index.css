@@ -6,6 +6,7 @@ body {
 .todoContainer {
   height: 100vh;
   /* border: 1px solid red; */
+  overflow: auto;
 }
 
 h1 {
@@ -14,7 +15,7 @@ h1 {
 }
 
 .createTaskContainer {
-  height: 400px;
+  height:auto;
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
@@ -32,6 +33,7 @@ h1 {
 }
 
 .createTaskInnerCont h3 {
+  font-size: 35px;
   /* border: 1px solid red; */
   padding: 10px 0px;
 
@@ -45,7 +47,7 @@ h1 {
   margin: 10px 0px;
 }
 
-.createTaskInnerCont button {
+.todoButton{
   width: 100px;
   padding: 10px;
   background-color: #3c3cf6be;
@@ -53,19 +55,20 @@ h1 {
   color: white;
   font-weight: bold;
   font-size: 17px;
+  cursor: pointer;
 }
 
 
 /* myTaskCOntainer */
 
-.myTaskCOntainer{
+.myTaskCOntainer {
   /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.myTaskInnerContainer{
+.myTaskInnerContainer {
   width: 40%;
   /* border: 1px solid red; */
   display: flex;
@@ -74,32 +77,36 @@ h1 {
 
 }
 
+
+
 .myTaskInnerContainer h3 {
   /* border: 1px solid red; */
+  font-size: 35px;
   padding: 10px 0px;
 
 }
 
 .myTaskInnerContainer ul {
- list-style-type: none;
+  list-style-type: none;
+  /* border: 1px solid red; */
+  padding: 0px;
 
 }
 
-.myTaskInnerContainer ul  li{
-  /* border: 1px solid red; */
- 
- }
+.myTaskInnerContainer ul li {}
 
- .todoListelemnt{
+.todoListelemnt {
   display: flex;
-align-items: center;
-justify-content: space-around;
- }
+  align-items: center;
+  justify-content: space-around;
+
+}
 
 
- .todo-item-container {
+.todo-item-container {
   /* border: 1px solid red; */
   margin-top: 15px;
+
   display: flex;
 }
 
@@ -167,12 +174,14 @@ justify-content: space-around;
 .delete-icon-container {
   text-align: right;
   width: 18%;
+  cursor: pointer;
 }
 
 .delete-icon {
   padding: 15px;
+
 }
 
 .checked {
-  text-decoration:line-through;
+  text-decoration: line-through;
 }
